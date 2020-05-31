@@ -1,0 +1,15 @@
+1. Download and install Sonar Scanner.(Latest Version)
+2. Download and install SonarQube.(Latest Version)
+3. Java 8 should be installed on the computer and java home must be set.
+4. Go to sonar scanner installation directory and copy/the/path/to/the/bin.
+5. Set the copied path to the PATH environment variable.
+6. Now go inside the maven project parent directory.
+7. Create sonar-project.properties file and save it and start the sonarqube server.
+8. Now open the command prompt from same directory and give the following command:
+	sonar-scanner -e -Dproject.settings=sonar-project.properties
+9. This will scan the project source files and analyze it.
+10. After the execution success. You will be able to see a URL right 3-4 line above the Execution Success message on the command line .
+11. Copy the URL and paste it in browser and see the results.
+
+SonarQube version - 6.4
+Sonar Scanner: 3.0.3.778

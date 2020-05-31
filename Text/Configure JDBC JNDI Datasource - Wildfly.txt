@@ -1,0 +1,33 @@
+Configure DataSource in Wildfly Server using JDBC/JTDS Driver:
+
+Step 1: Download the JTDS jar file, using below link
+	http://central.maven.org/maven2/net/sourceforge/jtds/jtds/1.3.1/jtds-1.3.1.jar
+	
+Step 2: Create net/sourceforge/jtds/main folders under "modules" folder in wildfly parent directory. Then place the JAR in "main" folder.
+Step 3: Open stanalone.xml file, which is located in Wildfly/stanalone/configuration folder.
+Step 4: Now create the JNDI datasource in "<subsystem xmlns="urn:jboss:domain:datasources:5.0"></subsystem>" tags.
+
+	<subsystem xmlns="urn:jboss:domain:datasources:5.0">
+        <datasources>
+			<datasource jndi-name="java:jboss/datasources/jdbc/yourJndiPoolName" pool-name="yourJndiPoolName" enabled="true" use-java-context="true">
+                <connection-url>jdbc:jtds:sqlserver://yourDatabaseServerIpOrName:1433;databaseName=yourDatabaseName</connection-url>
+                <driver>jtds</driver>
+                <pool>
+                    <min-pool-size>90</min-pool-size>
+                    <max-pool-size>90</max-pool-size>
+                </pool>
+                <security>
+                    <user-name>yourDatabaseUsername</user-name>
+                    <password>yourDatabasePassword</password>
+                </security>
+            </datasource>
+			<drivers>
+                <driver name="jtds" module="net.sourceforge.jtds">
+					<driver-class>net.sourceforge.jtds.jdbc.Driver</driver-class>
+                    <xa-datasource-class>net.sourceforge.jtds.jdbc.Driver</xa-datasource-class>
+                </driver>
+            </drivers>
+        </datasources>
+    </subsystem>
+		
+Step 5: Now start the server.

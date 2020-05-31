@@ -1,0 +1,171 @@
+# to check the version or correct installation
+git version
+
+# to check the config variables
+git config --list
+
+# to set the global user name and email
+git config --global user.name "username"
+git config --global user.email "email"
+
+# git help
+git COMMAND --help
+git help COMMAND
+
+# To start tracking a repository from a existing code
+# inside the directory which all things you want to track
+git init
+
+# to remove to .git directory
+rm -rf .git  
+
+# To know the status eg no of untracked files
+git status
+
+# To ignore the file which you don't want others to know then create a git .ignore file
+touch .gitignore
+
+------------ gitignore ------------
+-----------------------------------
+# To ignore files which you wnat to get ignored
+write the names prefixing filename.ext
+1. # ignore all .a files
+*.a
+# but do track lib.a, even though you're ignoring .a files above
+!lib.a
+# only ignore the TODO file in the current directory, not subdir/TODO
+/TODO
+# ignore all files in any directory named build
+build/
+# ignore doc/notes.txt, but not doc/server/arch.txt
+doc/*.txt
+# ignore all .pdf files in the doc/ directory and any of its subdirectories
+doc/**/*.pdf
+
+
+------------- chages made----------------
+git diff (to see the changes made)
+
+
+-------------  Staging Area ----------
+Where we can select what files to commit
+if we have lot of files to commit we can commit them in groups 
+by giving the commit proper message
+--------------------------------------------------------------
+git add -A	 ( to add all the untracked files at same time)
+git add filename (will add particular file to the staging area)
+git status   (to check whether the files have been tracked or stagged)
+git reset filename (to remove a file from staging area)
+git reset 	(to move all the staged files to untracked area)
+
+
+-------------- commit ---------------------
+git commit -m "meaningful message"
+
+-------------- log ------------------------
+git log
+
+
+--------------------- git clone---------------
+git clone <url> <where>
+this will clone the remote repository
+
+-------------viewing info about remote repo ------
+git remote -v (info about the remote repo)
+git remote -a (info about the branches of remote repo)
+
+
+------------ git push --------------
+before pushing the code to the remote repository
+always take pull before so that if the repository
+is modified by any other developer than you can 
+get the latest code
+------------------------------------------------
+git pull origin master(git pull name_of_remote_repo branch_name)
+git push origin master
+
+
+--------------- git branches----------------------
+it is always better to create a branch and then 
+work on it
+--------------------------------------------------
+git branch branch-name
+git branch (will show all the branches *mark branch is the current working branch)
+git checkout branch-name (will switch to the branch-name)
+
+
+Now  whatever the changes are made will be for the checkedout branch
+git push -u origin branch-name(currently u r in , this will craete a remote branch with the current branch name)
+
+git branch -a (will show all the remote and local repo)
+eg:-
+ master
+* newbranch
+  remotes/origin/HEAD -> origin/master
+  remotes/origin/master
+  remotes/origin/newbranch
+  
+
+  
+  ----------- merge a branch ---------------------------
+git checkout master 		(switch back to the master)
+git pull origin master 		(take a pull from the master)
+git branch --merged			( this will show all the branches which has been merged )
+git merge barnch_name_to_be_merged
+git push origin master		(push to the remote master)
+git branch --merged    (now thw merged branch will show with the master branch)
+
+git branch -d branchname   (this will delete the branch from the local)
+$ git branch -a				( now local branch wouldn't show as it was deleted)
+* master
+  remotes/origin/HEAD -> origin/master
+  remotes/origin/master
+  remotes/origin/newbranch
+  
+git push origin --delete branchname  (this will delete the branch from remote)
+
+ git branch -a
+* master
+  remotes/origin/HEAD -> origin/master
+  remotes/origin/master
+  
+  
+-------------- when we have not pushed the code to remote- -----------------  
+# To amend or override the last commit message
+git commit --amend -m "new message"
+
+
+
+---------------- git stash -------------------
+git stash save "meassage"
+git diff
+git status
+
+git stash list
+
+git stash apply stash@{no}    (it apply those changes but donot delete the stash from stash list)
+
+git stash pop (will apply and will delete the last stashed)
+
+git stash drop stash@{no}		(it will delete the stash without applying the changes)
+git stash clear 				(it will delete the all stash from the list without applying the changes)
+
+stash done in one branch can be applied in other branch
+
+
+
+
+
+
+	
+
+
+
+
+
+
+
+
+
+
+

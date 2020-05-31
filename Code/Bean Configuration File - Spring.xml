@@ -1,0 +1,32 @@
+<!-- This is typical bean configuration file for spring mvc
+We can autowire any of the bean declared below in required class
+If one bean is declared twice then use @Qualifier("beanID") annotation to recognize particular bean and autowire it
+ -->
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context-2.5.xsd">
+
+	<context:annotation-config /> <!-- This line registers AutowiredAnnotationBeanPostProcessor to enable autowire -->
+	
+	<!--Here's another way to achive the same goal as above line does -->
+	<bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"/>
+
+	<!--Beans Declaration -->
+	
+	<bean id="CustomerBean" class="com.aman.Customer">
+		<property name="action" value="buy" />
+		<property name="type" value="1" />
+	</bean>
+
+	<bean id="PersonBean" class="com.aman.Person">
+		<property name="name" value="mkyong" />
+		<property name="address" value="address ABC" />
+		<property name="age" value="29" />
+	</bean>
+	
+</beans>

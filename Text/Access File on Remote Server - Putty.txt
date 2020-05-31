@@ -1,0 +1,13 @@
+Configrue Putty :
+1. Enter host name in for session (For Example: qa.test.org).
+2. Make sure SSH is selected, then click on open.
+3. Now enter user ID & Password
+	UserId : 	admin
+	Password : 	admin@123
+4. Go the path where the file exist
+	$ cd /path/to/the/file
+5. To see files in a directory, type below command 
+	$ ls
+6. To see the file, type below command
+	$ tail -f file_name.extension
+7. To close the session, press CTRL+C

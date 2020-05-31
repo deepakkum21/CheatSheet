@@ -1,0 +1,61 @@
+================Banking Application POC=================
+
+Front End Technologies : Angular, Vaadin.
+
+BackEnd Technologies: SqlServer, MongoDb.
+
+Messaging Technologies: Spring REST, RabbitMQ, Kafka
+
+Servers: Tomcat, Wildfly.
+
+Frameworks: Spring Boot, AxonFramework.
+
+Database Technologies: MongoRepository, Hibernate.
+
+Programming Languages: Java.
+
+Testing: Spring Test, Junit.
+
+Build Tool: Maven
+
+REST Client: Postman.
+
+Browser: Google Chrome.
+
+IDEs: Eclipse, VsCode.
+
+Application Type: Web, Standalone, CRUD based, CQRS Based
+
+Version Control: Git
+
+CodeBase: Github
+
+Integration: Jenkins
+
+Containerization: Docker
+
+Orchestration: Docker Swarm, Kubernet
+
+Cloud Platform: Spring Cloud, Netflix Eureka, AWS(Amazon Web Services)
+
+Architecture: Micro-Services (Asynchronous: Message Based), Micro-Services (Synchronous: REST Based)
+
+============================================================================
+
+POC 1: Banking CQRS Application using Micro-Services Asynchronous Architecture. 
+		
+		SpringBoot: v2.0.6
+		Tomcat: v8.5.34 
+		RabbitMQ: v3.7.8
+		Angular: v6
+		AxonFramework: v3.3.3
+		MongoDB: v3.6
+		Java: v8
+		Junit: v4.12
+		Maven: v3.5.4
+		Postman: v6.4.2
+		Google Chrome: v70.0.3538.67
+		VsCode: v1.28.1
+		Git: 2.9.0
+		
+		

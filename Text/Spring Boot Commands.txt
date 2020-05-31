@@ -1,0 +1,7 @@
+<<<<<<<< To run a Spring Boot Application >>>>>>>>
+
+	mvn spring-boot:run
+	
+<<<<<<<< To override port specified in application.properties and run spring boot >>>>>>>>
+
+	mvn spring-boot:run -D spring-boot.run.arguments=--server.port=SPECIFY_PORT_NUMBER

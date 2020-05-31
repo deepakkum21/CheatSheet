@@ -1,0 +1,8 @@
+ctrl+d							:			To terminate service mix console
+bundle:list						:			To see a list of bundles
+tab								:			To see all available commands
+clear							:			To clear the console screen
+feature:install webconsole		:			To install web console
+
+Note: After installing webconsole we can see the web console in any browser using below URL 
+		http://localhost:8181/system/console

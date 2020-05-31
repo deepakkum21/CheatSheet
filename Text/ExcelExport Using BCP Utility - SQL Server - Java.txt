@@ -1,0 +1,92 @@
+Step 1: Install BCP Command Line Utility. Download it from below mentioned website. (Ignore if already installed)
+		https://www.microsoft.com/en-us/download/details.aspx?id=53591
+Step 2: After installing check wether it is installed or not.
+Step 3: To check type "bcp /v" (without double qoutes) at command prompt.
+Step 4: Create a standalone java project.
+Step 5: Create class ExcelExport.
+Step 6: The bcp command for exporting data from database to excel is:
+
+		bcp "your query" queryout "full file path(give absolute or relative).xls/csv/xlx/xlsx/txt/dat/etc" -w -d "database/schema name" -S "Server IP/Name" -U "Username" -P "Password"
+		
+		If your server has trusted connection, means you don't have to give username or password. So the command would be,
+		
+		bcp "your query" queryout "full file path(give absolute or relative).xls/csv/xlx/xlsx/txt/dat/etc" -w -d "database/schema name" -S "Server IP/Name" -T
+		
+		-T 			:		defines trusted connection (No need to give username or password)
+		queryout	:		copies query result to specified file format
+		bcp			:		bulk copy program
+		-S			:		defines name/IP of the database host server (Don't give port address because BCP automatically handles it)
+		-d			:		defines database/schema name
+		-U			:		defines username of the database connection
+		-P			:		defines password of database connection
+		-w			:		represent wide character length
+		
+		There are many switches that can be applied to bcp command. check the website Microsoft Docs
+		https://docs.microsoft.com/en-us/sql/tools/bcp-utility?view=sql-server-2017
+		
+		If you simply want to copy a table data to a file, then the command would be
+		
+		bcp your_table_name out "full file path(give absolute or relative).xls/csv/xlx/xlsx/txt/dat/etc" -w -d "database/schema name" -S "Server IP/Name" -U "Username" -P "Password"
+		
+Step 7: Store the command in a String and execute it with command line using java code. See example below :
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+public class ExcelExport {
+
+	private static final String SERVER_URL = "10.84.52.72";
+	private static final String DATABASE_NAME = "BPIGTN_AGN_APP_UAT";
+	private static final String USERNAME = "gtn_agn_uat";
+	private static final String PASSWORD = "57jM2JVDNuat";
+	private static final String EXCEL_FILE_NAME = "excel/Student.xls";
+	private static final String QUERY = "SELECT *FROM STUDENT";
+	private static final String TABLE_NAME = "Student";
+
+	public void exportToExcel() {
+
+		System.out.println("===Inside Excel Export===");		
+
+		// This BCP command copies data obtained from query to specified file format
+		String bcpCommand = "bcp \"" + QUERY + "\" queryout \"" + EXCEL_FILE_NAME + "\" -w -d \"" + DATABASE_NAME
+				+ "\" -S " + SERVER_URL + " -U \"" + USERNAME + "\" -P \"" + PASSWORD + "\"";
+				
+		// This BCP command copies data from a table to specified file format
+		String bcpCommand = "bcp " + TABLE_NAME + " out \"" + EXCEL_FILE_NAME + "\" -w -d \"" + DATABASE_NAME
+				+ "\" -S " + SERVER_URL + " -U \"" + USERNAME + "\" -P \"" + PASSWORD + "\"";
+		
+		System.out.println("BCP Command : " + bcpCommand);
+
+		// Executing above BCP command using command line
+		ProcessBuilder processBuilder = new ProcessBuilder("cmd.exe", "/c", bcpCommand);
+
+		try {
+
+			Process process = processBuilder.start();
+			
+			// Prints the process returned by process builder including errors if any
+			BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
+			String line;
+
+			while (true) {
+
+				line = reader.readLine();
+
+				if (line == null) {
+					break;
+				}
+
+				System.out.println(line);
+			}
+
+			System.out.println("Excel File Created !!!");
+
+		} catch (IOException ioException) {
+			ioException.printStackTrace();
+		}
+	}
+}
+
+Step 8: Call the method exportToExcel() from main() or anywhere to generate excel files.
+		

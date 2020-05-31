@@ -1,0 +1,51 @@
+>>>>To log into MongoDb
+
+	mongo -u USERNAME -p PASSWORD --authenticationDatabase DATABASE_NAME;
+	
+>>>>To authenticate into database
+
+	db.auth("USERNAME","PASSWORD);
+
+>>>>To logout from database
+	
+	db.logout();
+	
+>>>>To create a database
+
+	use DATABASE_NAME;
+	
+>>>>To use existing database
+
+	use DATABASE_NAME;
+	
+>>>>To show list of databases
+
+	show dbs;
+	
+>>>>To show list of collections
+
+	show collections;	OR	db.getCollectionNames();
+	
+>>>>To show list of users
+
+	show users;    OR    db.getUsers();
+	
+>>>>To show all the roles
+
+	show roles;
+
+>>>>To create a collection
+
+	db.createCollection("COLLECTION_NAME");
+	
+>>>>To insert a single document
+
+	db.COLLECTION_NAME.insertOne({KEY1 : VALUE1, KEY2 : VALUE2});
+	
+>>To insert multiple documents
+
+	db.COLLECTION_NAME.insertMany([{KEY1 : VALUE1, KEY2 : VALUE2},{KEY1 : VALUE1, KEY2 : VALUE2},{KEY1 : VALUE1, KEY2 : VALUE2}]);
+
+>>>>To show all the documents of a collection
+
+	db.COLLECTION_NAME.find();

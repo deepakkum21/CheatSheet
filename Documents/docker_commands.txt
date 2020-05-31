@@ -1,0 +1,23 @@
+docker version
+docker -v | docker --version
+docker ps
+docker ps -a
+docker images
+docker ps
+docker stop container_Id
+docker rm container_Id
+docker rmi image_name
+docker pull image_name:tag
+docker run image_name:tag
+docker run image_name cat /etc/*release*
+docker run -p hostport_no:containerport_no image_name
+docker run -it image-name (i input, t treminal)
+docker login
+docker build . -t image_name_to_be_given:tag
+docker run -d image-name (detach mode)
+docker attach contaioner_name
+docker run -v /opt/data: /var/lib/mysql
+
+docker-compose up
+docker-compose stop
+docker-compose down

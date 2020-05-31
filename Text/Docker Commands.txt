@@ -1,0 +1,70 @@
+1. Download & install docker engine and configure docker for windows by creating following environments variable: 
+
+	docker-machine env --shell cmd default
+	SET DOCKER_TLS_VERIFY=1
+	SET DOCKER_HOST=tcp://192.168.99.100:2376
+	SET DOCKER_CERT_PATH=C:\Users\USER_NAME\.docker\machine\machines\default
+	SET DOCKER_MACHINE_NAME=default	
+	SET COMPOSE_CONVERT_WINDOWS_PATHS=true
+	REM Run this command to configure your shell:
+	REM @FOR /f "tokens=*" %i IN ('docker-machine env --shell cmd default') DO @%i
+
+2. Create a docker file in the project. The docker file name must be Dockerfile.
+
+3. Command to build docker image :
+	docker build -f Dockerfile -t DOCKER_IMAGE_NAME PATH_WHERE_YOU_WANT_THE_DOCKER_IMAGE
+	Ex: docker build -f Dockerfile -t hello-world .
+	. represents root directory.
+	
+4. Command to see the list of docker images on local machine:
+	docker images
+	
+5.  Command to run the docker image on the docker container.
+	docker run -p IMAGE_PORT_NO:EXPOSING_PORT_NUMBER DOCKER_IMAGE_NAME (This command will run the container but won't delete after container is stopped.)
+	docker run --rm -it -p IMAGE_PORT_NO:EXPOSING_PORT_NUMBER DOCKER_IMAGE_NAME (This command will run the container and delete after container is stopped.)
+	Ex: docker run -p 8080:8085 hello-world
+	This command will run and expose the application in the docker container at port 8085.
+	
+6. Command to start the docker machine.
+	docker-machine start MACHINE_NAME
+	Ex: docker-machine start default
+	
+7. Command to stop the docker machine.
+	docker-machine stop MACHINE_NAME
+	Ex: docker-machine stop default
+	
+8. Command to view IP addresses attached with docker machine.
+	docker-machine ip
+	
+9. Command to list out available docker images:
+	docker images
+	
+10. Command to list out available docker containers:
+	docker ps
+	
+11. Command to pull an image from docker hub:
+	docker pull IMAGE_NAME:TAG (If no tag specified it pulls latest version of the image).
+	Ex: docker pull hello-world
+	
+12. Command to see docker environment variables:
+	docker-machine env
+	
+13. To bind docker Ip address to localhost :
+	a. Stop the docker machine.
+	b. Open virtual box.
+	c. Right click on docker machine name and select Setting.
+	d. In network tab, click Advance->Port Forwarding.
+	e. Specify new rule name.
+	f. Specify Host_IP as your localhost IP i.e. 127.0.0.1
+	g. Specify Host Port and Guest port.
+	h. Save the changes and restart docker machine.
+	
+14. Command to run rabbitmq image:
+	docker run --rm -it -d -p CONTAINER_PORT:SERVER_PORT --hostname my-rabbit --name CONTAINER_NAME rabbitmq
+	Ex 1: docker run --rm -it -d -p 5672:5672 --hostname my-rabbit --name bank-rabbit rabbitmq
+	Ex 2: docker run --rm -it -d -p 8080:15672 -p 5671:5671 -p 5672:5672 --hostname my-rabbit --name bank-rabbit rabbitmq:3-management
+	
+15. Command to run rabbitmq management web tool.
+	docker run --rm -it -d -p 15672:15672 --hostname my-rabbit --name CONTAINER_NAME rabbitmq:3-management
+	{The default username and password is guest and guest)
+	
