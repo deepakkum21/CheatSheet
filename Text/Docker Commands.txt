@@ -68,3 +68,20 @@
 	docker run --rm -it -d -p 15672:15672 --hostname my-rabbit --name CONTAINER_NAME rabbitmq:3-management
 	{The default username and password is guest and guest)
 	
+	
+docker images
+docker ps -a
+docker image rm id
+docker stop containerid
+
+
+docker run --name chatbot -d -p 8888:80 deepakkum21/chatbot:v1
+
+## seeing inside the running container
+docker exec -u root -t -i 36af4de30fd8 /bin/bash
+
+## copying from the running container
+docker cp containerid:/base_folder destination_folder
+
+## copying to the running container
+docker cp destination_folder containerid:/base_folder
