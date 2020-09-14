@@ -85,3 +85,12 @@ docker cp containerid:/base_folder destination_folder
 
 ## copying to the running container
 docker cp destination_folder containerid:/base_folder
+
+## docker exec -it some-image ls /path/to/file
+
+## to push to docker hub
+1. ` docker commit containerid dockerhubreponame/imagename:tag `
+2. `$ docker push dockerhubreponame/imagename:tag `
+
+## to see logs
+`docker logs containerid`
