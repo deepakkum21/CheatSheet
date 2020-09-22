@@ -69,8 +69,8 @@
 	{The default username and password is guest and guest)
 	
 	
-docker images
-docker ps -a
+`docker images`
+`docker ps -a`
 docker image rm id
 docker stop containerid
 
